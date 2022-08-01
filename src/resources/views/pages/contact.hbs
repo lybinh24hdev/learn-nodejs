@@ -1,0 +1,29 @@
+<div class='form mt-5'>
+  <h2 class='form_title'>How do we reach you?</h2>
+  <form class='row g-3' method='POST'>
+    <div class='mb-3'>
+      <label for='name' class='form-label'>Name</label>
+      <input type='text' name='name' class='form-control' id='name' />
+    </div>
+    <div class='mb-3'>
+      <label for='gender' class='form-label'>Gender</label>
+      <select class='form-select w-50' name='gender' id='gender'>
+        <option value='male'>Male</option>
+        <option value='female'>Female</option>
+      </select>
+    </div>
+    <div class='mb-3'>
+      <label for='email' class='form-label'>Email</label>
+      <input
+        type='email'
+        name='email'
+        class='form-control'
+        id='email'
+        placeholder='name@example.com'
+      />
+    </div>
+    <div class='col-auto'>
+      <button type='submit' class='btn btn-success mb-3'>Confirm</button>
+    </div>
+  </form>
+</div>

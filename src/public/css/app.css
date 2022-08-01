@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  background-color: #181A20;
+  color: #EAECEF; }
+
+h1 {
+  color: #15cb85; }
+
+.form {
+  max-width: 25rem;
+  margin: auto;
+  padding: 2rem;
+  background-color: #0b0e11;
+  border-radius: 8px; }
+  .form_title {
+    color: #15cb85; }
+  .form form {
+    display: flex;
+    flex-direction: column; }
+
+.employee_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+  .employee_list section {
+    min-width: 20rem; }
+
+.btn_explore {
+  text-decoration: none;
+  color: white; }
+
+.card-body {
+  position: relative; }
+  .card-body .name {
+    color: #15cb85; }
+  .card-body .social {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border-width: 2px; }
+  .card-body .btn-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer; }
+    .card-body .btn-close:hover {
+      opacity: 1; }
+  .card-body .tooltips {
+    position: absolute; }
+    .card-body .tooltips .tooltiptext {
+      visibility: hidden;
+      width: 70px;
+      background-color: orangered;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      position: absolute;
+      z-index: 1;
+      bottom: 150%;
+      right: -100%; }
+    .card-body .tooltips .tooltiptext::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: orangered transparent transparent transparent; }
+    .card-body .tooltips:hover .tooltiptext {
+      visibility: visible; }
+
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #f6d365;
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right bottom, #f6d365, #fda085);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right bottom, #f6d365, #fda085); }
+
+.show {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .show .name {
+    color: #15cb85;
+    text-shadow: -1px -1px 0 #222, 1px -1px 0 #222, -1px 1px 0 #222, 1px 1px 0 #222; }
+  .show h6 {
+    color: #181A20; }
