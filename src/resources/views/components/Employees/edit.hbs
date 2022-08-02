@@ -1,29 +1,38 @@
 <div class='form mt-5'>
-  <h2 class='form_title'>Add Employee</h2>
-  <form class='row g-3' method='POST' action='/employees/store'>
+  <h2 class='form_title'>Update Employee Infomations</h2>
+  <form
+    class='row g-3 mt-3'
+    method='POST'
+    action='/employees/{{employee._id}}?_method=PUT'
+  >
     <div class='mb-3'>
       <label for='name' class='form-label'>Name</label>
       <input
         type='text'
+        value='{{employee.name}}'
         name='name'
-        class='form-control'
+        class='form-control w-50'
         id='name'
-        placeholder="What's name?"
       />
     </div>
     <div class='mb-3'>
       <label for='age' class='form-label'>Age</label>
       <input
         type='text'
+        value='{{employee.age}}'
         name='age'
-        class='form-control'
+        class='form-control w-50'
         id='age'
-        placeholder='Ex: 18+'
       />
     </div>
     <div class='mb-3'>
       <label for='gender' class='form-label'>Gender</label>
-      <select class='form-select w-50' name='gender' id='gender'>
+      <select
+        class='form-select w-25'
+        value='{{employee.gender}}'
+        name='gender'
+        id='gender'
+      >
         <option value='male'>Male</option>
         <option value='female'>Female</option>
         <option value='other'>Other</option>
@@ -31,7 +40,12 @@
     </div>
     <div class='mb-3'>
       <label for='pos' class='form-label'>Level</label>
-      <select class='form-select w-50' name='pos' id='pos'>
+      <select
+        class='form-select w-25'
+        value='{{employee.pos}}'
+        name='pos'
+        id='pos'
+      >
         <option value='iron'>Iron</option>
         <option value='bronze'>Bronze</option>
         <option value='silver'>Silver</option>
@@ -47,24 +61,24 @@
       <label for='phoneNumber' class='form-label'>Phone Number</label>
       <input
         type='text'
+        value='{{employee.phoneNumber}}'
         name='phoneNumber'
-        class='form-control'
+        class='form-control w-25'
         id='phoneNumber'
-        placeholder='0123456789'
       />
     </div><div class='mb-3'>
       <label for='address' class='form-label'>Address</label>
       <input
         type='text'
+        value='{{employee.address}}'
         name='address'
-        class='form-control'
+        class='form-control w-50'
         id='address'
-        placeholder='Da Nang, Viet Nam'
       />
     </div>
 
-    <div class='col-auto m-auto mt-3 mb-2'>
-      <button type='submit' class='btn btn-success'>Confirm</button>
+    <div class='col-auto mr-auto mt-3 mb-2'>
+      <button type='submit' class='btn btn-success py-2 px-4'>Save</button>
     </div>
   </form>
 </div>

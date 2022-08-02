@@ -11,7 +11,8 @@ const Employees = new Schema(
     gender: { type: String },
     pos: { type: String, required: true },
     slug: { type: String, slug: 'name', unique: true },
-    videoId: String,
+    phoneNumber: { type: String, maxLength: 11 },
+    address: { type: String, maxLength: 255 },
   },
   { timestamps: true }
 );

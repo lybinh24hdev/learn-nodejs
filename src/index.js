@@ -1,8 +1,8 @@
 const express = require('express');
-const { engine } = require('express-handlebars');
+const handlebars = require('express-handlebars');
 const morgan = require('morgan');
-const path = require('path');
 const db = require('./config/db');
+const methodOverride = require('method-override');
 
 const app = express();
 const route = require('./routes');
@@ -17,7 +17,20 @@ app.use(express.json());
 // >>> Notify when localhost have change
 // app.use(morgan('combined'));
 
-app.engine('.hbs', engine({ extname: '.hbs' }));
+// override with POST having ?_method=DELETE
+app.use(methodOverride('_method'));
+
+// custome helper
+
+app.engine(
+  '.hbs',
+  handlebars.engine({
+    extname: '.hbs',
+    helpers: {
+      index: (a, b) => a + b,
+    },
+  })
+);
 app.set('view engine', '.hbs');
 app.set('views', __dirname + '/resources/views');
 

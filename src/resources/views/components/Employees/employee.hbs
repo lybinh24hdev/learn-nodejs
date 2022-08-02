@@ -24,12 +24,12 @@
                 <hr class='mt-0 mb-4' />
                 <div class='row pt-1'>
                   <div class='col-6 mb-3'>
-                    <h6>Email</h6>
-                    <p class='text-muted'>info@example.com</p>
+                    <h6>Address</h6>
+                    <p class='text-muted'>{{employee.address}}</p>
                   </div>
                   <div class='col-6 mb-3'>
                     <h6>Phone</h6>
-                    <p class='text-muted'>123 456 789</p>
+                    <p class='text-muted'>{{employee.phoneNumber}}</p>
                   </div>
                 </div>
                 <h6>Projects</h6>
@@ -55,16 +55,5 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class='video'>
-    <iframe
-      width='560'
-      height='315'
-      src='https://www.youtube.com/embed/{{employee.videoId}}'
-      title='YouTube video player'
-      frameborder='0'
-      allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-      allowfullscreen
-    ></iframe>
   </div>
 </section>

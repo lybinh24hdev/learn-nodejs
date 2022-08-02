@@ -20,12 +20,30 @@ class EmployeesCtl {
 
   // [POST] /employees/store
   store(req, res, next) {
-    const data = req.body;
-    data.slug = req.body.name.toLowerCase().trim().replace(' ', '-');
-    const small = new employeesModel(data)
+    const small = new employeesModel(req.body)
       .save()
       .then(() => res.redirect('/'))
       .catch(next);
+  }
+
+  // [GET] /employees/:id/edit
+  edit(req, res, next) {
+    employeesModel.findById(req.params.id).then((employee) => {
+      employee = mongooseTools.singleToObject(employee);
+      res.render('components/Employees/edit', { employee });
+    });
+  }
+
+  // [PUT] /employees/:id
+  async update(req, res, next) {
+    await employeesModel.findByIdAndUpdate({ _id: req.params.id }, req.body);
+    res.redirect('/me/manage/employees');
+  }
+
+  // [DELETE] /employees/:id
+  async delete(req, res, next) {
+    await employeesModel.deleteOne({ _id: req.params.id });
+    res.redirect('back');
   }
 }
 
