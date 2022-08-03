@@ -13,8 +13,21 @@ h1 {
 .text-color {
   color: #eaecef; }
 
+.text-orangered {
+  color: orangered; }
+
+.min-w100 {
+  min-width: 100px; }
+
+.rec-40 {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center; }
+
 .form {
-  max-width: 40rem;
+  max-width: 35rem;
   margin: auto;
   padding: 2rem;
   background-color: #0b0e11;
