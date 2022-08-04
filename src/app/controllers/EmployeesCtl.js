@@ -6,6 +6,7 @@ class EmployeesCtl {
   async show(req, res, next) {
     try {
       const result = await employeesModel.findOne({ slug: req.params.slug });
+      console.log(result);
       const employee = mongooseTools.singleToObject(result);
       res.render('components/Employees/employee', { employee });
     } catch (e) {
@@ -22,7 +23,7 @@ class EmployeesCtl {
   store(req, res, next) {
     const small = new employeesModel(req.body)
       .save()
-      .then(() => res.redirect('/'))
+      .then(() => res.redirect('/me/manage/employees'))
       .catch(next);
   }
 
@@ -42,6 +43,18 @@ class EmployeesCtl {
 
   // [DELETE] /employees/:id
   async delete(req, res, next) {
+    await employeesModel.delete({ _id: req.params.id });
+    res.redirect('back');
+  }
+
+  // [PATCH] /employees/:id/restore
+  async restore(req, res, next) {
+    await employeesModel.restore({ _id: req.params.id });
+    res.redirect('back');
+  }
+
+  // [DELETE] /employees/:id/force-delete
+  async forceDelete(req, res, next) {
     await employeesModel.deleteOne({ _id: req.params.id });
     res.redirect('back');
   }

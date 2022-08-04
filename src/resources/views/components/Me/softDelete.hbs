@@ -1,10 +1,9 @@
 <div class='container mt-4'>
-  
   <div class="trash">
-    <a href="/me/trash/employees"><i class="fa-solid fa-trash-can"></i><div class="count-delete">{{countDeleted}}</div></a>
+    <a href="/me/manage/employees"><i class="fa-solid fa-angle-left"></i></a>
   </div>
   <table class='table table-dark caption-top text-color'>
-    <caption class='text-info'>List of employees</caption>
+    <caption class='text-info'>List of employees deleted</caption>
     <thead class=''>
       <tr>
         <th scope='col'>#</th>
@@ -26,16 +25,17 @@
           <td>{{this.phoneNumber}}</td>
           <td>{{this.address}}</td>
           <td class='text-end'>
-            <a
+            <button
+              id='btn-restore'
               class='btn btn-link p-0 text-decoration-none text-info'
-              href='/employees/{{this._id}}/edit'
-            >Edit</a>
+              data-bs-idRestore='{{this._id}}'
+            >Restore</button>
             <button
               type='button'
               class='btn btn-link p-0 ms-3 text-decoration-none text-danger'
               data-bs-toggle='modal'
               data-bs-target='#exampleModal'
-              data-bs-id='{{this._id}}'
+              data-bs-idDelete='{{this._id}}'
               data-bs-name='{{this.name}}'
             >Delete</button>
 
@@ -45,7 +45,7 @@
         {{else}}
         <tr>
           <td class="text-center" colspan="7">
-            Opp!!! There's no one at all. <a href="/employees/create" class="text-decoration-none text-info">Add someone here!</a>
+            There's no one at all. <a href="/me/manage/employees" class="text-decoration-none text-info">Back to list</a>
           </td>
         </tr>
 
@@ -65,7 +65,7 @@
   <div class='modal-dialog'>
     <div class='modal-content'>
       <div class='modal-header'>
-        <h5 class='modal-title text-orangered' id='exampleModalLabel'>MOVE TO TRASH</h5>
+        <h5 class='modal-title text-orangered' id='exampleModalLabel'>CAN NOT RESTORE!</h5>
         <button
           type='button'
           class='btn-close'
@@ -85,7 +85,6 @@
         <form
           class='form-delete'
           method='POST'
-          
           style='display: inline-block;'
         >
           <button type='submit' class='btn btn-danger'>Confirm</button>
@@ -95,19 +94,33 @@
   </div>
 </div>
 
-<script>
-  
-  const exampleModal = document.getElementById('exampleModal');
+<form method="POST" id="force-restore" action=""></form>
 
+<script>
+
+  const exampleModal = document.getElementById('exampleModal');
+  const formRestore = document.getElementById('force-restore');
+  const btnResotre = document.querySelectorAll('#btn-restore');
+
+
+  btnResotre.forEach((btn) => {
+    btn.addEventListener('click', () => {
+    const idRestore = btn.getAttribute('data-bs-idRestore');
+    formRestore.action = `/employees/${idRestore}/restore?_method=PATCH`;
+    console.log({formRestore})
+    formRestore.submit();
+    })
+  })
+  
   exampleModal.addEventListener('show.bs.modal', event => {
     const button = event.relatedTarget;
-    const id = button.getAttribute('data-bs-id');
+    const idDelete = button.getAttribute('data-bs-idDelete');
     const name = button.getAttribute('data-bs-name');
     const form = exampleModal.querySelector('.form-delete');
     const modalBody = exampleModal.querySelector('.modal-body');
 
-    form.action = `/employees/${id}?_method=DELETE`;
-    modalBody.innerHTML = `Are you sure you want to move ${name} to black list?`
+    form.action = `/employees/${idDelete}/force-delete?_method=DELETE`;
+    modalBody.innerHTML = `Are you sure you want to delete ${name}`
   })
     
 </script>

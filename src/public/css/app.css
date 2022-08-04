@@ -65,31 +65,6 @@ h1 {
     cursor: pointer; }
     .card-body .btn-close:hover {
       opacity: 1; }
-  .card-body .tooltips {
-    position: absolute; }
-    .card-body .tooltips .tooltiptext {
-      visibility: hidden;
-      width: 70px;
-      background-color: orangered;
-      color: #fff;
-      text-align: center;
-      border-radius: 6px;
-      padding: 5px 0;
-      position: absolute;
-      z-index: 1;
-      bottom: 150%;
-      right: -100%; }
-    .card-body .tooltips .tooltiptext::after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      margin-left: -5px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: orangered transparent transparent transparent; }
-    .card-body .tooltips:hover .tooltiptext {
-      visibility: visible; }
 
 .gradient-custom {
   /* fallback for old browsers */
@@ -122,3 +97,28 @@ h1 {
 
 .form-delete {
   display: inline-block; }
+
+.trash {
+  text-align: end;
+  position: relative;
+  width: 26.25px;
+  height: 30px;
+  margin-left: auto; }
+  .trash i {
+    font-size: 30px;
+    color: #15cb85;
+    cursor: pointer; }
+  .trash .count-delete {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    color: black;
+    font-size: 16px;
+    font-weight: 700;
+    bottom: -8px;
+    right: -8px; }
